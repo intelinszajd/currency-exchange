@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center">Currency converter</h3>
+      <form
+        [formGroup]="currencyExchangeForm"
+        (ngSubmit)="doConversion(currencyExchangeForm.value)"
+      >
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Input Currency</label>
+              <app-currency-selector
+                (updateCurrentCurrency)="updateInputCurrency($event)"
+                [currencyData]="apiCurrencyData"
+              ></app-currency-selector>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Output Currency</label>
+              <app-currency-selector
+                (updateCurrentCurrency)="updateOutputCurrency($event)"
+                [currencyData]="apiCurrencyData"
+              ></app-currency-selector>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="form-group">
+            <input
+              class="form-control text-end"
+              type="number"
+              id="priceInput"
+              aria-describedby="priceInput"
+              formControlName="priceInput"
+            />
+          </div>
+        </div>
+        <div class="text-center mt-3 mb-5">
+          <button type="submit" class="btn btn-success btn-md">Convert</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="card" *ngIf="convertedPrice && hiddenPrice">
+        <div class="card-body">
+          <table class="table table-striped-columns">
+            <tr>
+              <th>Double Converted Price:</th>
+              <td>{{ convertedPrice }}</td>
+            </tr>
+            <tr>
+              <th>Included hidden fees:</th>
+              <td>{{ hiddenPrice }}</td>
+            </tr>
+            <tr>
+              <th>Direct Converted Price:</th>
+              <td>{{ directConvertedPrice }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

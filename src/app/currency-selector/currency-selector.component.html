@@ -1,0 +1,12 @@
+<select
+  *ngIf="currencies; else emptySelector"
+  class="form-select"
+  type="number"
+  [(ngModel)]="currentCurrency"
+  (ngModelChange)="onChange($event)"
+>
+  <option *ngFor="let currency of currencies" [ngValue]="currency">
+    {{ currency.name }}
+  </option>
+</select>
+<ng-template #emptySelector></ng-template>
