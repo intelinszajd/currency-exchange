@@ -12,7 +12,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## API mock
 
-The current API provide data that we cant use to calculate hidden excahnge fees.
+The current API that we use, doesn't calculate any hidden exchange fees.
 To test this feature, use `environment.ts` "mockHandlingFee" variable. (it's 1.01 initially)
 This variable modifies the exchange rate.
 If you want to disable it use: 1.0 value.
